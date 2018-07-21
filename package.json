@@ -1,0 +1,25 @@
+{
+  "name": "world-disasters-dashboard",
+  "version": "1.0.0",
+  "description": "world disasters and emergencies dashboard",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "author": "Julien Regnault",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "leaflet": "^1.3.1",
+    "nodemon": "^1.18.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
