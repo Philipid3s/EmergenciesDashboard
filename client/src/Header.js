@@ -4,7 +4,7 @@ import './Header.css';
 
 class Header extends Component {
   state = {
-    response: ''
+    response: '[Connection do server... please wait.]'
   };
 
   render() {
@@ -14,10 +14,7 @@ class Header extends Component {
           <img src={logo} className="Header-logo" alt="logo" />
           <h1 className="Header-title">GED - global emergencies dashboard</h1>
         </header>
-        <p className="Header-intro">
-          if (this.state.response == '')
-            <font color="red">[Connection to node.js server...]</font>
-          else
+          <p className="Header-intro">
             {this.state.response}
           </p>
       </div>
