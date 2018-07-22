@@ -4,7 +4,7 @@ import './Header.css';
 
 class Header extends Component {
   state = {
-    response: '[Connection to server... please wait.]'
+    response: '<font color="red">[Connection to server... please wait]</font>'
   };
 
   render() {
