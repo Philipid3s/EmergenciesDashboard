@@ -4,7 +4,7 @@ import './Header.css';
 
 class Header extends Component {
   state = {
-    response: '[Connection do server... please wait.]'
+    response: '[Connection to server... please wait.]'
   };
 
   render() {
