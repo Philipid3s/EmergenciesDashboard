@@ -31,8 +31,16 @@ app.get('/api/usgs', (req, res) => {
   todayMinus10days.setDate(today.getDate()-10);
 
   let usgs = new USGS(todayMinus10days, today, 'green');
-
   sendResultsUSGS(usgs, res);
+
+  let usgs2 = new USGS(todayMinus10days, today, 'yellow');
+  sendResultsUSGS(usgs2, res);
+
+  let usgs3 = new USGS(todayMinus10days, today, 'orange');
+  sendResultsUSGS(usgs3, res);
+
+  let usgs4 = new USGS(todayMinus10days, today, 'red');
+  sendResultsUSGS(usgs4, res);
 });
 
 app.get('/api/ocha', (req, res) => {
