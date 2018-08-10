@@ -4,7 +4,7 @@ const date_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'nu
 
 class USGS {
 
-  constructor(dateFrom, dateTo, level) {
+  constructor(dateFrom, dateTo) {
     this.earthquakes = [];
 
     var dd1 = dateFrom.getDate();
@@ -15,7 +15,7 @@ class USGS {
     var mm2 = dateTo.getMonth()+1; //January is 0!
     var yyyy2 = dateTo.getFullYear();
 
-    this.url = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${yyyy1}-${mm1}-${dd1}&endtime=${yyyy2}-${mm2}-${dd2}&alertlevel=${level}`;
+    this.url = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${yyyy1}-${mm1}-${dd1}&endtime=${yyyy2}-${mm2}-${dd2}`;
   }
 
   json() {
@@ -45,8 +45,14 @@ class USGS {
     let json = await(await fetch(this.url)).json();
 
     await Promise.all(json.features.map(data => {
-                      const result = this.addEarthquake(data);
-                      console.log(result);
+                      if (data.properties.level == 'green' ||
+                          data.properties.level == 'yellow'||
+                          data.properties.level == 'orange'||
+                          data.properties.level == 'red')
+                          {
+                            const result = this.addEarthquake(data);
+                            console.log(result);
+                          }
                   }));
 
     console.log('[earthquakes] loaded!');
