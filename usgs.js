@@ -45,10 +45,10 @@ class USGS {
     let json = await(await fetch(this.url)).json();
 
     await Promise.all(json.features.map(data => {
-                      if (data.properties.level == 'green' ||
-                          data.properties.level == 'yellow'||
-                          data.properties.level == 'orange'||
-                          data.properties.level == 'red')
+                      if (data.properties.alert == 'green' ||
+                          data.properties.alert == 'yellow'||
+                          data.properties.alert == 'orange'||
+                          data.properties.alert == 'red')
                           {
                             const result = this.addEarthquake(data);
                             console.log(result);
